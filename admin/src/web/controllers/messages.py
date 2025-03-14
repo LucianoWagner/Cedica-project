@@ -17,7 +17,7 @@ messages_blueprint = Blueprint("messages", __name__, url_prefix="/messages")
 
 
 # Añade tu clave secreta de reCAPTCHA aquí
-RECAPTCHA_SECRET_KEY = '6Le_JIIqAAAAAOh04w5ujjxuiQfyUEKZs25OW3Su'
+#RECAPTCHA_SECRET_KEY = 'agregarlo aca'
 
 
 def verify_recaptcha(token):
