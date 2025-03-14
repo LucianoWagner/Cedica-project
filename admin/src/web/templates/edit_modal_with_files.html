@@ -1,0 +1,56 @@
+{% extends 'edit_modal.html' %}
+{% block modal_body %}
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="edit-tab-content"
+            data-tabs-toggle="#default-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="edit-data-tab"
+                        data-tabs-target="#edit-tab-data"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Datos
+                </button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="edit-files-tab" data-tabs-target="#edit-tab-files" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Archivos
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div id="edit-tab-content">
+        <div class="grid grid-cols-6 gap-6" id="edit-tab-data" role="tabpanel" aria-labelledby="edit-data-tab">
+            {% block data_tab_content %}
+            {% endblock %}
+        </div>
+
+        <div id="edit-tab-files" role="tabpanel" aria-labelledby="edit-files-tab" class="grid grid-cols-6 gap-6 hidden">
+            <div id="edit-file-upload-section" class="col-span-6 sm:col-span-6">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Archivos</label>
+                <div id="edit-file-upload-container">
+                    <!-- Upload dynamically -->
+                </div>
+
+                <div class="flex flex-row justify-end items-right">
+                    <button type="button" id="edit-file-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro archivo
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="edit-link-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro enlace
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

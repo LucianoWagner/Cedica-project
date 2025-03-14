@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Pagos{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Pagos {% endblock %}
+{% block content %}
+    {% include 'payments/payments_table.html' with context %}
+{% endblock %}

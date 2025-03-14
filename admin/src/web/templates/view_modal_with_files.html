@@ -1,0 +1,80 @@
+{% extends 'view_modal.html' %}
+{% block modal_body %}
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="view-tab-content"
+            data-tabs-toggle="#default-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="view-data-tab"
+                        data-tabs-target="#view-tab-data"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Datos
+                </button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="view-files-tab" data-tabs-target="#view-tab-files" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Archivos
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <div id="view-tab-content">
+        <div class="grid grid-cols-6 gap-6 hidden" id="view-tab-data" role="tabpanel" aria-labelledby="view-data-tab">
+            {% block data_tab_content %}
+            {% endblock %}
+        </div>
+
+        <div id="view-tab-files" role="tabpanel" aria-labelledby="view-files-tab" class="grid grid-cols-6 gap-6 hidden">
+            <div id="view-file-filters-section" class="col-span-6 ">
+                <form id="files-filter-form">
+
+                    <div class="flex flex-row gap-4 items-end">
+                        <input type="hidden" name="url" id="url_file_filter">
+
+                        <div class="flex-1">
+                            <label for="name_file_filter"
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                            <input type="text" name="title" id="name_file_filter"
+                                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                   placeholder="Filtrar por nombre">
+                        </div>
+
+                        <div class="flex-1">
+                            <label for="type_file_filter"
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
+                            <select name="type" id="type_file_filter"
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            >
+                                <option value="" selected>Todos los tipos</option>
+                                {% for file_type in file_types %}
+                                    <option value="{{ file_type }}">{{ file_type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit"
+                                class="flex-1 text-white text-base bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 p-2.5">
+                            Aplicar
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+            <hr class="h-px my-4 bg-gray-700 border-0 dark:bg-white col-span-6">
+            <div id="view-file-upload-section" class="col-span-6 sm:col-span-6">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Archivos</label>
+                <div id="view-file-upload-container">
+                    <!-- Upload dynamically -->
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

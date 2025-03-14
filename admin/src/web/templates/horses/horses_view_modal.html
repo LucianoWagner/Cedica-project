@@ -1,0 +1,160 @@
+{% extends 'view_modal_with_files.html' %}
+
+{% block module %}
+    Caballo
+{% endblock %}
+
+
+
+{% block data_tab_content %}
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_name"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+        <input type="text" name="name" id="view_name"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el nombre" required readonly>
+    </div>
+
+    <!-- Birth Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_birth_date"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de nacimiento</label>
+        <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input datepicker id="view_birth_date" type="text" name="birth_date" datepicker-format="dd/mm/yyyy"
+                   datepicker-max-date="{{ today_date }}"
+                   required
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Seleccione una fecha" disabled>
+        </div>
+    </div>
+
+    <!-- Sex -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_sex"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo</label>
+        <select name="sex" id="view_sex"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required disabled>
+            <option value="" selected>Seleccione el sexo</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+        </select>
+    </div>
+
+    <!-- Race -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_race"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Raza</label>
+        <input type="text" name="race" id="view_race"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese la raza" required readonly>
+    </div>
+
+    <!-- Fur -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_fur"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pelaje</label>
+        <input type="text" name="fur" id="view_fur"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el pelaje" required readonly>
+    </div>
+
+    <!-- Origin -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_origin"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origen</label>
+        <select name="origin" id="view_origin"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required disabled>
+            <option value="" selected>Seleccione el origen</option>
+            {% for origin in origins %}
+                <option value="{{ origin }}">{{ origin }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Entry Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_entry_date"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de ingreso</label>
+        <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input datepicker readonly id="view_entry_date" type="text" name="entry_date"
+                   datepicker-format="dd/mm/yyyy"
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Seleccione una fecha" datepicker-max-date="{{ today_date }}" required disabled>
+        </div>
+    </div>
+
+    <!-- Headquarter -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_headquarter"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sede</label>
+        <input type="text" name="headquarter" id="view_headquarter"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese la sede" required readonly>
+    </div>
+
+    <!-- JYA Type -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_jya_type"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de JYA</label>
+        <select name="jya_type" id="view_jya_type"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required disabled>
+            <option value="" selected>Seleccione el tipo de JYA</option>
+            {% for jya_type in jya_types %}
+                <option value="{{ jya_type }}">{{ jya_type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_trainers"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entrenadores</label>
+        <select id="view_trainers" name="trainers"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="">Select a Trainer</option>
+            <!-- Options will be populated by jQuery -->
+        </select>
+    </div>
+
+    <!-- Riders Select -->
+    <div class=" col-span-6 sm:col-span-3">
+        <label for="view_riders"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Corredores</label>
+        <select id="view_riders" name="riders"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="">Select a Rider</option>
+            <!-- Options will be populated by jQuery -->
+        </select>
+    </div>
+
+    <!-- Dropdown menu -->
+
+    <!-- Error Message Container -->
+    <div id="viewErrorMessageContainer"
+         class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+         role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+            <span class="font-medium" id="viewErrorMessage">Ensure that these requirements are met:</span>
+        </div>
+    </div>
+
+{% endblock %}

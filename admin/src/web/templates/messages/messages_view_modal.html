@@ -1,0 +1,47 @@
+{% extends 'view_modal_with_files.html' %}
+
+{% block module %}
+    Mensaje
+{% endblock %}
+
+{% block modal_body %}
+    <input type="hidden" name="id" id="view_id">
+
+    <!-- Full Name -->
+    <div class="col-span-6">
+        <label for="view_full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
+            Completo</label>
+        <input type="text" id="view_full_name" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Email -->
+    <div class="col-span-6">
+        <label for="view_email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo
+            Electrónico</label>
+        <input type="email" id="view_email" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Body -->
+    <div class="col-span-6">
+        <label for="view_body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mensaje</label>
+        <textarea id="view_body" rows="4" readonly
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+    </div>
+
+    <!-- Comment -->
+    <div class="col-span-6">
+        <label for="view_comment"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Comentario</label>
+        <textarea id="view_comment" rows="4" readonly
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+    </div>
+
+    <!-- Status -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado</label>
+        <input type="text" id="view_status" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+{% endblock %}

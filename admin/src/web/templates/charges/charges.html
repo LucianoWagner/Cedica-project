@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Cobros{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Cobros {% endblock %}
+{% block content %}
+    {% include 'charges/charges_table.html' with context %}
+{% endblock %}

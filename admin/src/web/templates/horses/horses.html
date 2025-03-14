@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Ecuestre{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Caballos {% endblock %}
+{% block content %}
+    {% include 'horses/horses_table.html' with context %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Equipo{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Equipo {% endblock %}
+{% block content %}
+    {% include 'members/members_table.html' with context %}
+{% endblock %}

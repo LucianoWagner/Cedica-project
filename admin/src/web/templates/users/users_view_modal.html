@@ -1,0 +1,91 @@
+<div id="viewUserModal" tabindex="-1" aria-hidden="true"
+     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <form id="viewUserForm" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Datos del usuario</h3>
+                <button type="button" data-modal-hide="viewUserModal"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"
+                         aria-hidden="true">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <div class="grid grid-cols-6 gap-6">
+
+                    <!-- ID (Hidden) -->
+                    <input type="hidden" name="id" id="view-user-id">
+
+                    <!-- Email -->
+                    <div class="col-span-6">
+                        <label for="view-user-email"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email" name="email" id="view-user-email"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder="example@example.com" required readonly>
+                    </div>
+
+                    <!-- Alias -->
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="view-user-alias"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alias</label>
+                        <input type="text" name="alias" id="view-user-alias"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder="Ingrese el alias" required maxlength="100" readonly>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="view-user-role"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rol</label>
+                        <select name="role_id" id="view-user-role"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required aria-readonly="true" disabled>
+                            <option value="" selected>Seleccione un rol</option>
+                            {% for role in roles %}
+                                <option value="{{ role.id }}">{{ role.name | capitalize }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Member -->
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="view-user-member"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Miembro</label>
+                        <input type="text" name="member" id="view-user-member"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder="Ingrese el alias" required maxlength="100" readonly>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="view-user-created-at"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+                            creación</label>
+                        <input type="text" name="created_at" id="view-user-created-at"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               readonly>
+                    </div>
+
+                    <!-- Active -->
+                    <div class="col-span-6 group">
+                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                            <input type="checkbox" id="view-user-active" class="sr-only peer" name="active" readonly
+                                   disabled>
+                            <div class="relative w-11 h-6 bg-gray-200 group-[.group-disabled]:bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Activo</span>
+                        </label>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

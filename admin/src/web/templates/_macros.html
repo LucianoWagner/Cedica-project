@@ -1,0 +1,81 @@
+{% macro sortable_header(column_label, column_name, sort_by, order, page) %}
+    {% set query_params = request.args.to_dict() %}
+    {% if 'sort_by' in query_params %}
+        {% set _ = query_params.pop('sort_by') %}
+    {% endif %}
+    {% if 'order' in query_params %}
+        {% set _ = query_params.pop('order') %}
+    {% endif %}
+
+    {% set new_order = 'asc' if (sort_by != column_name) or (order == 'desc') else 'desc' %}
+
+    <a href="{{ url_for(request.endpoint, sort_by=column_name, order=new_order, **query_params) }}"
+       class="px-4 py-3 text-gray-900 whitespace-nowrap dark:text-white flex items-center">
+        {{ column_label }}
+        {% if sort_by == column_name %}
+            {% if order == 'asc' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3 ms-1.5">
+                    <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+                </svg>
+            {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3 ms-1.5">
+                    <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                </svg>
+            {% endif %}
+        {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3 ms-1.5">
+                <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+            </svg>
+        {% endif %}
+    </a>
+{% endmacro %}
+
+
+{% macro inject_url_param(key, value) %}
+    {% set args = request.args.copy() %}
+    {% if value is none %}
+        {% set args = args|d({}) %}
+        {% set _ = args.pop(key, None) %}
+    {% else %}
+        {% set args = args|d({}) %}
+        {% set _ = args.update({key: value}) %}
+    {% endif %}
+    {{ url_for(request.endpoint, **args) }}
+{% endmacro %}
+
+
+{% macro confirmation_modal(text, confirmation_button_text) %}
+    <div id="delete-modal" tabindex="-1" aria-hidden="true"
+         class=" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="delete-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5 text-center">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"> {{ text }}</h3>
+                    <button data-modal-hide="delete-modal" type="button" id="confirm-delete"
+                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        {{ confirmation_button_text }}
+                    </button>
+                    <button data-modal-hide="delete-modal" type="button"
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        No, cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

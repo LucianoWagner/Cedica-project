@@ -1,0 +1,153 @@
+{% extends 'view_modal_with_files.html' %}
+{% block module %}
+    Miembro
+{% endblock %}
+
+{% block data_tab_content %}
+    <div class="col-span-6 sm:col-span-3">
+        <input type="hidden" name="url" id="view_url">
+        <label for="view_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+        <input type="text" name="name" id="view_name" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el nombre" required>
+    </div>
+
+    <!-- Apellido -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+        <input type="text" name="surname" id="view_surname" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el apellido" required>
+    </div>
+
+    <!-- DNI -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_dni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+        <input type="text" name="dni" id="view_dni" pattern="\d*" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el DNI" required>
+    </div>
+
+    <!-- Edad -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Edad</label>
+        <input type="number" name="age" id="view_age" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese la edad" required>
+    </div>
+
+    <!-- Fecha de nacimiento -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_birthdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+            nacimiento</label>
+        <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input datepicker type="text" name="birth_date" id="view_birth_date" datepicker-format="dd/mm/yyyy" disabled
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full ps-10 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Seleccione una fecha" required>
+        </div>
+    </div>
+
+    <!-- Lugar de nacimiento -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_birth_place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lugar de
+            nacimiento (localidad y provincia)</label>
+        <input type="text" name="birth_place" id="view_birth_place" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese localidad y provincia" required>
+    </div>
+
+    <!-- Domicilio actual -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Domicilio
+            actual</label>
+        <input type="text" name="address" id="view_address" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese domicilio actual" required>
+    </div>
+
+    <!-- Teléfono actual -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_telephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono
+            actual</label>
+        <input type="tel" name="telephone" id="view_telephone" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el teléfono actual" required>
+    </div>
+
+    <!-- Contacto de emergencia -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_emergency_contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contacto
+            de emergencia y telefono</label>
+        <input type="text" name="emergency_contact" id="view_emergency_contact" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el contacto de emergencia" required>
+    </div>
+
+    <!-- Porcentaje de beca -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_scholarship_percentage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Porcentaje de beca
+        </label>
+        <div class="grid grid-cols-2 gap-3 items-center">
+            <input type="number" name="grant_percentage" id="view_grant_percentage" readonly
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Ingrese porcentaje de beca">
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="view_scholarship" class="sr-only peer" name="granted" disabled
+                       onchange="toggleScholarshipPercentage()">
+                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Becado</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Deuda -->
+    <div class="col-span-6 sm:col-span-3">
+        <label class="inline-flex items-center mb-5 cursor-pointer">
+            <input type="checkbox" id="view_deuda_field" name="behind_payment" class="sr-only peer" disabled
+                   onchange="updateDeudaValue()">
+            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Deuda</span>
+        </label>
+    </div>
+
+    <!-- Profesionales que lo atienden -->
+    <div class="col-span-6">
+        <label for="view_professionals_list" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+            profesionales que lo atienden</label>
+        <div id="view_professionals_list"
+             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-28 overflow-y-auto">
+            {% for professional in all_professionals %}
+                <div class="flex items-center mb-2">
+                    <input id="view_professional_{{ professional.id }}" type="checkbox" name="professionals"
+                           value="{{ professional.id }}" disabled
+                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="view_professional-{{ professional.id }}"
+                           class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {{ professional.person.name }} {{ professional.person.surname }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Error Message Container -->
+    <div id="view_error_message_container"
+         class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+         role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+            <span class="font-medium" id="view_error_message">Ensure that these requirements are met:</span>
+        </div>
+    </div>
+{% endblock %}

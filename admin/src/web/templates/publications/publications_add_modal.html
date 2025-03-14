@@ -1,0 +1,62 @@
+{% extends 'add_modal.html' %}
+
+{% block title %}
+    Agregar Publicación
+{% endblock %}
+
+{% block modal_body %}
+    <div class="grid grid-cols-6 gap-6">
+        <!-- Title -->
+        <div class="col-span-6">
+            <label for="addTitle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Título</label>
+            <input type="text" name="title" id="addTitle" maxlength="150"
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Ingrese el título" required>
+        </div>
+
+        <!-- Summary -->
+        <div class="col-span-6">
+            <label for="addSummary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Resumen</label>
+            <input type="text" name="summary" id="addSummary" maxlength="250"
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Ingrese un resumen de la publicación" required>
+        </div>
+
+        <!-- Content -->
+        <div class="col-span-6">
+            <label for="addContent"
+                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contenido</label>
+            <textarea name="content" id="addContent" rows="8"
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Escriba el contenido aquí" required></textarea>
+        </div>
+
+        <!-- Status -->
+        <div class="col-span-6 sm:col-span-3">
+            <label for="addStatus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado</label>
+            <select name="status" id="addStatus"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required>
+                <option value="Borrador">Borrador</option>
+                <option value="Publicada">Publicada</option>
+                <option value="Archivada">Archivada</option>
+            </select>
+        </div>
+
+        <!-- Error Message Container -->
+        <div id="errorMessageContainer"
+             class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+             role="alert">
+            <div class="flex items-center">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <span class="font-medium" id="errorMessage"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "table_layout.html" %}
+{% import '_macros.html' as macros %}
+
+{% block table_header %}
+    {% include 'charges/charges_table_header.html' with context %}
+{% endblock %}
+
+{% macro render_row(elem) %}
+    <tr id="row-{{ elem.id }}" class="border-b dark:border-gray-700">
+        <td class="px-4 py-3">{{ elem.jya.person.name if elem.jya }}</td>
+        <td class="px-8 py-3">{{ elem.date.strftime('%d de %B, %Y') }}</td>
+        <td class="px-4 py-3">{{ elem.payment_method }}</td>
+        <td class="px-4 py-3">{{ elem.amount }}</td>
+        {% if elem.member %}
+            <td class="px-4 py-3">{{ elem.member.person.name if elem.member else '' }}</td>
+            <td class="px-4 py-3">{{ elem.member.person.surname if elem.member else '' }}</td>
+        {% else %}
+            <td class="px-4 py-3"></td>
+            <td class="px-4 py-3"></td>
+        {% endif %}
+        <td class="px-4 py-3">{{ elem.observations }}</td>
+        <td class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                {% if elem.jya.behind_payment %}
+                    <span class="inline-block w-3 h-3 mr-2 bg-blue-500 rounded-full"></span>Tiene deuda
+                {% else %}
+                    <span class="inline-block w-3 h-3 mr-2 bg-gray-500 rounded-full"></span>No tiene deuda
+                {% endif %}
+            </div>
+            <div class="flex items-center justify-end">
+                <button id="dropdown-button-{{ elem.id }}" data-dropdown-toggle="dropdown-{{ elem.id }}"
+                        class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                        type="button">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
+                    </svg>
+                </button>
+                <div id="dropdown-{{ elem.id }}"
+                     class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdown-button-{{ elem.id }}">
+                        {% if has_session_permission(session, 'charge_show') %}
+                            <li>
+                                <a type="button" href="#" id="view-button-{{ elem.id }}"
+                                   data-get-url="{{ url_for('charges.ChargeResource', charge_id=elem.id) }}"
+                                   data-id="{{ elem.id }}"
+                                   data-modal-target="viewModal" data-modal-toggle="viewModal"
+                                   data-jya="{{ elem.jya.person.name if elem.jya else '' }}"
+                                   data-member="{{ elem.member.person.name if elem.member else '' }}"
+                                   data-date="{{ elem.date }}"
+                                   data-payment-method="{{ elem.payment_method }}"
+                                   data-amount="{{ elem.amount }}"
+                                   data-observations="{{ elem.observations if elem.observations else '' }}"
+                                   data-behind-payment="{{ elem.jya.behind_payment }}"
+                                   class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ver
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if has_session_permission(session, 'charge_update') %}
+                            <li>
+                                <a type="button" href="#" id="edit-button-{{ elem.id }}"
+                                   data-get-url="{{ url_for('charges.ChargeResource', charge_id=elem.id) }}"
+                                   data-id="{{ elem.id }}"
+                                        {% if elem.member %}
+                                   data-member="{{ elem.member.id }}"
+                                        {% else %}
+                                   data-member=""
+                                        {% endif %}
+
+                                   data-date="{{ elem.date }}"
+                                   data-payment_method="{{ elem.payment_method }}"
+                                   data-observations="{{ elem.description }}"
+                                   data-amount="{{ elem.amount }}"
+                                   data-behind-payment="{{ elem.jya.behind_payment }}"
+                                   data-modal-target="editModal" data-modal-toggle="editModal"
+                                   class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    {% if has_session_permission(session, 'charge_destroy') %}
+                        <div class="py-1">
+                            <a type="button" href="#" id="delete-btn-{{ elem.id }}" data-id="{{ elem.id }}"
+                               data-url="{{ url_for('charges.ChargeResource', charge_id=elem.id) }}"
+                               data-modal-target="delete-modal"
+                               data-modal-toggle="delete-modal"
+                               class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white delete-btn">
+                                Delete
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endmacro %}
+
+{% block add_modal %}
+    {% include 'charges/charges_add_modal.html' %}
+{% endblock %}
+
+
+{% block delete_modal %}
+    {{ macros.confirmation_modal('¿Estás seguro de que deseas eliminar este pago?', 'Eliminar') }}
+{% endblock %}
+
+
+{% block edit_modal %}
+    {% include 'charges/charges_edit_modal.html' with context %}
+{% endblock %}
+
+{% block view_modal %}
+    {% include 'charges/charges_view_modal.html' with context %}
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/charges/chargeForms.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charges/filterCharges.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charges/chargeModals.js') }}"></script>
+
+{% endblock %}

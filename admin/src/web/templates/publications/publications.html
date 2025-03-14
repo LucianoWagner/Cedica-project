@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Publicaciones{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Publicaciones {% endblock %}
+{% block content %}
+    {% include 'publications/publications_table.html' with context %}
+{% endblock %}

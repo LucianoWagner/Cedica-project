@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Mensajes{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Mensajes {% endblock %}
+{% block content %}
+    {% include 'messages/messages_table.html' with context %}
+{% endblock %}

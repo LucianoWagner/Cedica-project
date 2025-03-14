@@ -1,0 +1,57 @@
+<div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-x-auto">
+    <!--        Header-->
+
+    {% block table_header %} {% endblock %}
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                {% for column in columns %}
+                    <th scope="col" class="px-4 py-3">
+                        {% if column["sortable"] %}
+                            {{ macros.sortable_header(column["label"],column["name"], sort_by, order, page) }}
+                        {% else %}
+                            {{ column.label }}
+                        {% endif %}
+                    </th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Contenido/body-->
+            {% block table_body %}
+                {% for elem in data %}
+                    {{ render_row(elem) }}
+                {% endfor %}
+
+            {% endblock %}
+
+            </tbody>
+        </table>
+
+
+        {% block add_modal %} {% endblock %}
+        {% block delete_modal %} {% endblock %}
+        {% block view_modal %} {% endblock %}
+        {% block edit_modal %} {% endblock %}
+
+    </div>
+
+    <!--    Pagination/footer-->
+    {% include 'table_pagination.html' with context %}
+
+
+
+
+
+
+    {% block scripts %}
+        <script src="{{ url_for('static', filename="js/common/delete.js") }}"></script>
+        <script src="{{ url_for('static', filename="js/common/files.js") }}"></script>
+        <script src="{{ url_for('static', filename="js/common/forms.js") }}"></script>
+
+    {% endblock %}
+
+</div>

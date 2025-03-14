@@ -1,0 +1,276 @@
+{% extends 'add_modal.html' %}
+
+{% block title %}
+    Agregar miembro
+{% endblock %}
+
+{% block modal_body %}
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="add-tab-content"
+            data-tabs-toggle="#add-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="add-data-tab"
+                        data-tabs-target="#add-tab-data"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Datos
+                </button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="add-files-tab" data-tabs-target="#add-tab-files" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Archivos
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <div id="add-tab-content">
+        <div class="hidden grid grid-cols-6 gap-6" id="add-tab-data" role="tabpanel" aria-labelledby="add-data-tab">
+            <!-- Name -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                <input type="text" name="name" id="addName" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el nombre" required>
+            </div>
+
+            <!-- Surname -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addSurname"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                <input type="text" name="surname" id="addSurname" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el apellido" required>
+            </div>
+
+            <!-- DNI -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addDni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+                <input type="text" name="dni" id="addDni" pattern="\d{8}" title="Ingrese un DNI válido"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el DNI" required>
+            </div>
+
+            <!-- Address -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addAddress"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
+                <input type="text" name="address" id="addAddress" maxlength="50" pattern="[A-Za-z\s0-9]+"
+                       title="Letras, espacios y números únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese calle y número" required>
+            </div>
+
+            <!-- Telephone -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addTelephone"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+                <input type="text" name="telephone" id="addTelephone" pattern="\d{10}"
+                       title="Ingrese un número de teléfono válido. Ej: 2215671234"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el teléfono" required>
+            </div>
+
+            <!-- Emergency Contact -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addEmergencyContact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contacto
+                    de emergencia</label>
+                <input type="text" name="emergency_contact" id="addEmergencyContact" maxlength="100"
+                       pattern="[A-Za-z\s0-9]+"
+                       title="Letras, espacios y números únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese nombre y teléfono" required>
+            </div>
+
+            <!-- Email -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addEmail"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo electrónico</label>
+                <input type="email" name="email" id="addEmail"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el correo electrónico" required>
+            </div>
+
+            <!-- Locality -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addLocality"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Localidad</label>
+                <input type="text" name="locality" id="addLocality" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese la localidad" required>
+            </div>
+
+            <!-- Profession -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addProfession"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profesión</label>
+                <select name="profession" id="addProfession"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="Psicólogo">Psicólogo</option>
+                    <option value="Psicomotricista">Psicomotricista</option>
+                    <option value="Médico">Médico</option>
+                    <option value="Kinesiólogo">Kinesiólogo</option>
+                    <option value="Terapista Ocupacional">Terapista Ocupacional</option>
+                    <option value="Psicopedagogo">Psicopedagogo</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Profesor">Profesor</option>
+                    <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+                    <option value="Veterinario">Veterinario</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <!-- Job Position -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addJobPosition" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Puesto
+                    de
+                    trabajo</label>
+                <select name="job_position" id="addJobPosition"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Terapeuta">Terapeuta</option>
+                    <option value="Conductor">Conductor</option>
+                    <option value="Auxiliar de pista">Auxiliar de pista</option>
+                    <option value="Herrero">Herrero</option>
+                    <option value="Veterinario">Veterinario</option>
+                    <option value="Entrenador de Caballos">Entrenador de Caballos</option>
+                    <option value="Domador">Domador</option>
+                    <option value="Profesor de Equitación">Profesor de Equitación</option>
+                    <option value="Docente de Capacitación">Docente de Capacitación</option>
+                    <option value="Auxiliar de mantenimiento">Auxiliar de mantenimiento</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <!-- Start Date -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addStartDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+                    inicio</label>
+                <div class="relative max-w-sm">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker id="addStartDate" type="text" name="start_date" datepicker-format="dd/mm/yyyy"
+                           required
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Seleccione una fecha">
+                </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addEndDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+                    finalización</label>
+                <div class="relative max-w-sm">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker id="addEndDate" type="text" name="end_date" datepicker-format="dd/mm/yyyy"
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Seleccione una fecha">
+                </div>
+            </div>
+
+            <!-- Medical Insurance -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addMedicalInsurance"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seguro médico</label>
+                <input type="text" name="medical_insurance" id="addMedicalInsurance" maxlength="50"
+                       pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el seguro médico" required>
+            </div>
+
+            <!-- Insurance Number -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addInsuranceNumber"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número de seguro</label>
+                <input type="text" name="insurance_number" id="addInsuranceNumber" maxlength="50" pattern="\d+"
+                       title="Números únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el número de seguro" required>
+            </div>
+
+            <!-- Job Condition -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addJobCondition" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condición
+                    laboral</label>
+                <select name="job_condition" id="addJobCondition"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="Voluntario">Voluntario</option>
+                    <option value="Personal Rentado">Personal Rentado</option>
+                </select>
+            </div>
+
+            <!-- Active Status -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addActive"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Activo</label>
+                <select name="active" id="addActive"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+
+            <!-- Error Message Container -->
+            <div id="errorMessageContainer"
+                 class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+                 role="alert">
+                <div class="flex items-center">
+                    <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                        <span class="font-medium" id="errorMessage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="add-tab-files" role="tabpanel" aria-labelledby="add-files-tab" class="grid grid-cols-6 gap-6 hidden">
+            <div id="file-upload-section" class="col-span-6 sm:col-span-6">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Archivos</label>
+                <div id="file-upload-container">
+                </div>
+                <div class="flex flex-row justify-end items-right">
+                    <button type="button" id="add-file-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro archivo
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="add-link-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro enlace
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Equipo{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block page_title %} Jinetes & Amazonas {% endblock %}
+{% block content %}
+    {% include 'jyas/jyas_table.html' with context %}
+{% endblock %}

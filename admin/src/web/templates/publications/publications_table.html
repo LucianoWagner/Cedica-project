@@ -1,0 +1,96 @@
+{% extends "table_layout.html" %}
+{% import '_macros.html' as macros %}
+
+{% block table_header %}
+    {% include 'publications/publications_table_header.html' with context %}
+{% endblock %}
+
+{% macro render_row(elem) %}
+    <tr id="row-{{ elem.id }}" class="border-b dark:border-gray-700">
+        <td class="px-8 py-3">
+            {{ elem.publication_date.strftime('%d de %B, %Y') if elem.publication_date else '-' }}
+        </td>
+        <td class="px-8 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.created_at.strftime('%d de %B, %Y') }}
+        </td>
+        <td class="px-8 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.title }}
+        </td>
+        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.user.member.person.name }} {{ elem.user.member.person.surname }}
+        </td>
+        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.status }}
+        </td>
+        <td class="px-4 py-3 flex items-center justify-end">
+            <button id="dropdown-button-{{ elem.id }}" data-dropdown-toggle="dropdown-{{ elem.id }}"
+                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                    type="button">
+                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
+                </svg>
+            </button>
+            <div id="dropdown-{{ elem.id }}"
+                 class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdown-button-{{ elem.id }}">
+                    {% if has_session_permission(session, 'publication_show') %}
+                        <li>
+                            <a type="button" href="#" id="view-button-{{ elem.id }}"
+                               data-modal-target="viewModal" data-modal-toggle="viewModal"
+                               data-id="{{ elem.id }}"
+                               class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ver
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if has_session_permission(session, 'publication_update') %}
+                        <li>
+                            <a type="button" href="#" id="edit-button-{{ elem.id }}"
+                               data-url="{{ url_for('publications.PublicationsResource', publication_id=elem.id) }}"
+                               data-id="{{ elem.id }}"
+                               data-modal-target="editModal" data-modal-toggle="editModal"
+                               class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% if has_session_permission(session, 'publication_destroy') %}
+                    <div class="py-1">
+                        <a type="button" href="#" id="delete-btn-{{ elem.id }}"
+                           data-modal-target="delete-modal"
+                           data-modal-toggle="delete-modal"
+                           data-id="{{ elem.id }}"
+                           data-url="{{ url_for('publications.PublicationsResource') }}{{ elem.id }}"
+                           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white delete-publication-btn">
+                            Eliminar
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </td>
+    </tr>
+    </div>
+{% endmacro %}
+
+{% block add_modal %}
+    {% include 'publications/publications_add_modal.html' %}
+{% endblock %}
+
+{% block delete_modal %}
+    {{ macros.confirmation_modal('¿Estás seguro de que deseas eliminar esta publicación?', 'Eliminar') }}
+{% endblock %}
+
+{% block edit_modal %}
+    {% include 'publications/publications_edit_modal.html' with context %}
+{% endblock %}
+
+{% block view_modal %}
+    {% include 'publications/publications_view_modal.html' with context %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/publications/publicationsForms.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/publications/publicationsModals.js') }}"></script>
+{% endblock %}

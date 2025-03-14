@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh; /* Adjusted height to make it shorter */
+            text-align: center;
+            background-color: #f9f9f9; /* Light background */
+            padding: 20px;
+        }
+
+        .welcome-image {
+            max-width: 80%; /* Scaled down image width */
+            height: auto;
+            margin: 10px 0; /* Reduced margin */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h1 {
+            color: black; /* Changed to black */
+            font-size: 3rem !important; /* Increased font size with important */
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333; /* Darker text for contrast */
+            font-size: 1.2rem; /* Increased font size */
+            margin: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="welcome-container">
+        <h1>Bienvenido a la aplicación para trabajadores de CEDICA</h1>
+        <p>Esta es tu página de inicio.</p>
+        <p>Para acceder a las diferentes funcionalidades, seleccioná alguna de las opciones de la barra de
+            navegación.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPa5-RT0vL4g2B-gwQHhAxw11foYn-IE2kpg&s"
+             alt="Bienvenido" class="welcome-image">
+    </div>
+{% endblock %}

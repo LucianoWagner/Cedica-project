@@ -1,0 +1,219 @@
+{% extends 'add_modal.html' %}
+
+{% block title %}
+    Agregar J&A
+{% endblock %}
+
+{% block modal_body %}
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="add-tab-content"
+            data-tabs-toggle="#add-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="add-data-tab"
+                        data-tabs-target="#add-tab-data"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Datos
+                </button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="add-files-tab" data-tabs-target="#add-tab-files" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Archivos
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <div id="add-tab-content">
+        <div class="grid grid-cols-6 gap-6 hidden flex flex-grow" id="add-tab-data" role="tabpanel"
+             aria-labelledby="add-data-tab">
+            <!-- Nombre -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="add_name"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                <input type="text" name="name" id="add_name" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el nombre" required>
+            </div>
+
+            <!-- Apellido -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addSurname"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                <input type="text" name="surname" id="addSurname" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el apellido" required>
+            </div>
+
+            <!-- DNI -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addDni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+                <input type="text" name="dni" id="addDni" pattern="\d{8}" title="Ingrese un DNI válido"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el DNI" required>
+            </div>
+
+            <!-- Edad -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addAge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Edad</label>
+                <input type="text" name="age" id="addAge" pattern="\d{1,2}" title="Ingrese una edad válida"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese la edad" required>
+            </div>
+
+            <!-- Fecha de nacimiento -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addBirthdate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+                    nacimiento</label>
+                <div class="relative max-w-sm">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker type="text" name="birth_date" id="addBirthdate" datepicker-format="dd/mm/yyyy"
+                           datepicker-max-date="{{ today_date }}"
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full ps-10 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Seleccione una fecha" required>
+                </div>
+            </div>
+
+            <!-- Lugar de nacimiento -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addBirthPlace" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lugar de
+                    nacimiento (localidad y provincia)</label>
+                <input type="text" name="birth_place" id="addBirthPlace" maxlength="80" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese localidad y provincia" required>
+            </div>
+
+            <!-- Domicilio actual -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addAddress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Domicilio
+                    actual</label>
+                <input type="text" name="address" id="addAddress" maxlength="50" pattern="[A-Za-z\s0-9]+"
+                       title="Letras, espacios y números únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese domicilio actual" required>
+            </div>
+
+            <!-- Teléfono actual -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addTelephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono
+                    actual</label>
+                <input type="tel" name="telephone" id="addTelephone" pattern="\d{10}"
+                       title="Ingrese un número de teléfono válido. Ej: 2215671234"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el teléfono actual" required>
+            </div>
+
+            <!-- Contacto de emergencia -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addEmergencyContact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contacto
+                    de emergencia y telefono</label>
+                <input type="text" name="emergency_contact" id="addEmergencyContact" maxlength="100"
+                       pattern="[A-Za-z\s0-9]+"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el contacto de emergencia" required>
+            </div>
+
+            <!-- Porcentaje de beca -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addScholarshipPercentage"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Porcentaje de beca
+                </label>
+                <div class="grid grid-cols-2 gap-3 items-center">
+                    <input type="text" name="grant_percentage" id="addScholarshipPercentage"
+                           pattern="([1-9]|[1-9][0-9])"
+                           title="Ingrese un porcentaje válido (1-99)"
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Ingrese porcentaje de beca" disabled>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="addScholarship" class="sr-only peer" name="granted">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Becado</span>
+                    </label>
+                </div>
+            </div>
+
+
+            <!-- Deuda -->
+            <div class="col-span-6 sm:col-span-3">
+                <label class="inline-flex items-center mb-5 cursor-pointer">
+                    <input type="checkbox" id="addDeudaField" name="behind_payment" class="sr-only peer">
+                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Deuda</span>
+                </label>
+            </div>
+
+
+            <!-- Profesionales que lo atienden -->
+            <div class="col-span-6">
+                <label for="professionals_list" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+                    profesionales que lo atienden</label>
+                <div id="professionals_list"
+                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-28 overflow-y-auto">
+                    {% for professional in all_professionals %}
+                        <div class="flex items-center mb-2">
+                            <input id="professional-{{ professional.id }}" type="checkbox" name="professionals"
+                                   value="{{ professional.id }}"
+                                   class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="professional-{{ professional.id }}"
+                                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                {{ professional.person.name }} {{ professional.person.surname }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Error Message Container -->
+            <div id="addErrorMessageContainer"
+                 class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+                 role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <span class="font-medium" id="addErrorMessage">Ensure that these requirements are met:</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="add-tab-files" role="tabpanel" aria-labelledby="add-files-tab" class="grid grid-cols-6 gap-6 hidden">
+            <div id="file-upload-section" class="col-span-6 sm:col-span-6">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Archivos</label>
+                <div id="file-upload-container">
+                </div>
+                <div class="flex flex-row justify-end items-right">
+                    <button type="button" id="add-file-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro archivo
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="add-link-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro enlace
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

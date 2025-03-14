@@ -1,0 +1,109 @@
+{% extends "table_layout.html" %}
+{% import '_macros.html' as macros %}
+
+{% block table_header %}
+
+    {% include 'jyas/jyas_table_header.html' with context %}
+
+{% endblock %}
+
+{% macro render_row(elem) %}
+    <tr id="row-{{ elem.id }}" class="border-b dark:border-gray-700">
+        <td class="px-8 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.person.name }}
+        </td>
+        <td class="px-8 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.person.surname }}
+        </td>
+        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.person.dni }}
+        </td>
+        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ elem.person.telephone }}
+        </td>
+        <td class="px-8 py-3">
+            {{ elem.createdAt.strftime('%d de %B, %Y') }}
+        </td>
+        <td class="px-4 py-3 flex items-center justify-end">
+            <div class="flex items-center justify-end">
+                <button id="dropdown-button-{{ elem.id }}" data-dropdown-toggle="dropdown-{{ elem.id }}"
+                        class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                        type="button">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>
+                    </svg>
+                </button>
+                <div id="dropdown-{{ elem.id }}"
+                     class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdown-button-{{ elem.id }}">
+                        {% if has_session_permission(session, 'jya_show') %}
+                            <li>
+                                <a type="button" href="#" id="view-button-{{ elem.id }}"
+                                   data-url="{{ url_for('jyas.JyaResource', jya_id=elem.id) }}"
+                                   data-file-filter-url="{{ url_for('jyas.JyaFilesResource', jya_id=elem.id) }}"
+                                   data-modal-toggle="viewModal"
+                                   data-modal-target="viewModal"
+                                   class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white delete-btn">Ver
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if has_session_permission(session, 'jya_update') %}
+                            <li>
+                                <a type="button" href="#" id="edit-button-{{ elem.id }}" data-modal-target="editModal"
+                                   data-modal-toggle="editModal"
+                                   data-url="{{ url_for('jyas.JyaResource', jya_id=elem.id) }}"
+                                   class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white delete-btn">Editar
+                                </a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                    {% if has_session_permission(session, 'jya_destroy') %}
+
+                        <div class="py-1">
+                            <a type="button" href="#" id="delete-btn-{{ elem.id }}" data-id="{{ elem.id }}"
+                               data-url="{{ url_for('jyas.JyaResource', jya_id=elem.id) }}"
+                               data-modal-target="delete-modal"
+                               data-modal-toggle="delete-modal"
+                               class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white delete-btn">
+                                Delete
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </td>
+    </tr>
+
+{% endmacro %}
+
+{% block add_modal %}
+    {% include 'jyas/jyas_add_modal.html' %}
+{% endblock %}
+
+{% block delete_modal %}
+    {{ macros.confirmation_modal('¿Estás seguro de que deseas eliminar este JYA?', 'Eliminar') }}
+{% endblock %}
+
+{% block edit_modal %}
+    {% include 'jyas/jyas_edit_modal.html' with context %}
+{% endblock %}
+
+{% block view_modal %}
+    {% include 'jyas/jyas_view_modal.html' with context %}
+{% endblock %}
+
+{% block scripts %}
+
+    {{ super() }}
+    <script>
+        let fileTypes = {{ file_types | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/jyas/jyaModals.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jyas/jyaForms.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jyas/filterJyas.js') }}"></script>
+{% endblock %}

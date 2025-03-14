@@ -1,0 +1,220 @@
+{% extends 'edit_modal_with_files.html' %}
+{% block module %}
+    Miembro
+{% endblock %}
+
+{% block data_tab_content %}
+    <input type="hidden" name="id" id="edit_id">
+    <input type="hidden" name="url" id="edit_url">
+
+    <!-- Name -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+        <input type="text" name="name" id="edit_name" maxlength="50" pattern="[A-Za-z\s]+"
+               title="Letras y espacios únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el nombre" required>
+    </div>
+
+    <!-- Surname -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+        <input type="text" name="surname" id="edit_surname" maxlength="50" pattern="[A-Za-z\s]+"
+               title="Letras y espacios únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el apellido" required>
+    </div>
+
+    <!-- DNI -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_dni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+        <input type="text" name="dni" id="edit_dni" pattern="\d{8}" title="Ingrese un DNI válido"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el DNI" required>
+    </div>
+
+    <!-- Address -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
+        <input type="text" name="address" id="edit_address"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese calle y número" required>
+    </div>
+
+    <!-- Telephone -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_telephone"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+        <input type="text" name="telephone" id="edit_telephone" pattern="\d{10}"
+               title="Ingrese un número de teléfono válido. Ej: 2215671234"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el teléfono" required>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_emergency_contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contacto
+            de emergencia</label>
+        <input type="text" name="emergency_contact" id="edit_emergency_contact" maxlength="50" pattern="[A-Za-z\s0-9]+"
+               title="Letras, espacios y números únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese nombre y teléfono" required>
+    </div>
+
+    <!-- Email -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo
+            electrónico</label>
+        <input type="email" name="email" id="edit_email"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese el correo electrónico" required>
+    </div>
+
+    <!-- Locality -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_locality"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Localidad</label>
+        <input type="text" name="locality" id="edit_locality" maxlength="100" pattern="[A-Za-z\s0-9]+"
+               title="Letras, espacios y números únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Ingrese la localidad" required>
+    </div>
+
+    <!-- Profession -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_profession"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profesión</label>
+        <select name="profession" id="edit_profession"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            <option value="Psicólogo">Psicólogo</option>
+            <option value="Psicomotricista">Psicomotricista</option>
+            <option value="Médico">Médico</option>
+            <option value="Kinesiólogo">Kinesiólogo</option>
+            <option value="Terapista Ocupacional">Terapista Ocupacional</option>
+            <option value="Psicopedagogo">Psicopedagogo</option>
+            <option value="Docente">Docente</option>
+            <option value="Profesor">Profesor</option>
+            <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+            <option value="Veterinario">Veterinario</option>
+            <option value="Otro">Otro</option>
+        </select>
+    </div>
+
+    <!-- Job Position -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_job_position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Puesto de
+            trabajo</label>
+        <select name="job_position" id="edit_job_position"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            <option value="Administrativo">Administrativo</option>
+            <option value="Terapeuta">Terapeuta</option>
+            <option value="Conductor">Conductor</option>
+            <option value="Auxiliar de pista">Auxiliar de pista</option>
+            <option value="Herrero">Herrero</option>
+            <option value="Veterinario">Veterinario</option>
+            <option value="Entrenador de Caballos">Entrenador de Caballos</option>
+            <option value="Domador">Domador</option>
+            <option value="Profesor de Equitación">Profesor de Equitación</option>
+            <option value="Docente de Capacitación">Docente de Capacitación</option>
+            <option value="Auxiliar de mantenimiento">Auxiliar de mantenimiento</option>
+            <option value="Otro">Otro</option>
+        </select>
+    </div>
+
+    <!-- Start Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+            inicio</label>
+        <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input datepicker id="edit_start_date" type="text" name="start_date" datepicker-format="dd/mm/yyyy" required
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Seleccione una fecha">
+        </div>
+    </div>
+
+    <!-- End Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+            finalización</label>
+        <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input datepicker id="edit_end_date" type="text" name="end_date" datepicker-format="dd/mm/yyyy"
+                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="Seleccione una fecha">
+        </div>
+    </div>
+
+    <!-- Medical Insurance -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_medical_insurance" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medical
+            Insurance</label>
+        <input type="text" name="medical_insurance" id="edit_medical_insurance" maxlength="50" pattern="[A-Za-z\s]+"
+               title="Letras y espacios únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               required>
+    </div>
+
+    <!-- Insurance Number -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_insurance_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Insurance
+            Number</label>
+        <input type="text" name="insurance_number" id="edit_insurance_number" maxlength="50" pattern="\d+"
+               title="Números únicamente"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               required>
+    </div>
+
+    <!-- Job Condition -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_job_condition" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condición
+            laboral</label>
+        <select name="job_condition" id="edit_job_condition"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            <option value="Voluntario">Voluntario</option>
+            <option value="Personal Rentado">Personal Rentado</option>
+        </select>
+    </div>
+
+    <!-- Active -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="edit_active" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Activo</label>
+        <select name="active" id="edit_active"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+            <option value=1>Sí</option>
+            <option value=0>No</option>
+        </select>
+    </div>
+
+    <!-- Error Message Container -->
+    <div id="editErrorMessageContainer"
+         class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+         role="alert">
+        <div class="flex items-center">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+                <span class="font-medium" id="editErrorMessage"></span>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

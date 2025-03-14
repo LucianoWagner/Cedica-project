@@ -1,0 +1,262 @@
+{% extends 'add_modal.html' %}
+
+{% block title %}
+    Agregar caballo
+{% endblock %}
+
+{% block modal_body %}
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="add-tab-content"
+            data-tabs-toggle="#default-tab-content" role="tablist">
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="add-data-tab"
+                        data-tabs-target="#add-tab-data"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Datos
+                </button>
+            </li>
+            <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="add-files-tab" data-tabs-target="#add-tab-files" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Archivos
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <div id="add-tab-content">
+        <div class="grid grid-cols-6 gap-6 hidden" id="add-tab-data" role="tabpanel" aria-labelledby="add-data-tab">
+
+            <!-- Horse Name -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addName"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                <input type="text" name="name" id="addName" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el nombre" required>
+            </div>
+
+            <!-- Birth Date -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addBirthDate"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de nacimiento</label>
+                <div class="relative max-w-sm">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker id="addBirthDate" type="text" name="birth_date" datepicker-format="dd/mm/yyyy"
+                           datepicker-max-date="{{ today_date }}"
+                           required
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Seleccione una fecha">
+                </div>
+            </div>
+
+            <!-- Sex -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addSex"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo</label>
+                <select name="sex" id="addSex"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="" selected>Seleccione el sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+
+            <!-- Race -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addRace"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Raza</label>
+                <input type="text" name="race" id="addRace" maxlength="50" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese la raza" required>
+            </div>
+
+            <!-- Fur -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addFur"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pelaje</label>
+                <input type="text" name="fur" id="addFur" maxlength="25" pattern="[A-Za-z\s]+"
+                       title="Letras y espacios únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese el pelaje" required>
+            </div>
+
+            <!-- Origin -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addOrigin"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origen</label>
+                <select name="origin" id="addOrigin"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="" selected>Seleccione el origen</option>
+                    {% for origin in origins %}
+                        <option value="{{ origin }}">{{ origin }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Entry Date -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addEntryDate"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de ingreso</label>
+                <div class="relative max-w-sm">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker id="addEntryDate" type="text" name="entry_date" datepicker-format="dd/mm/yyyy"
+                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Seleccione una fecha" datepicker-max-date="{{ today_date }}" required>
+                </div>
+            </div>
+
+            <!-- Headquarter -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addHeadquarter"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sede</label>
+                <input type="text" name="headquarter" id="addHeadquarter" maxlength="50" pattern="[A-Za-z\s0-9]+"
+                       title="Letras, espacios y números únicamente"
+                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Ingrese la sede" required>
+            </div>
+
+            <!-- JYA Type -->
+            <div class="col-span-6 sm:col-span-3">
+                <label for="addJyaType"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de JYA</label>
+                <select name="jya_type" id="addJyaType"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required>
+                    <option value="" selected>Seleccione el tipo de JYA</option>
+                    {% for jya_type in jya_types %}
+                        <option value="{{ jya_type }}">{{ jya_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+                <label for="dropdownCheckboxButton"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Corredores</label>
+                <button id="dropdownRidersButton" data-dropdown-toggle="dropdownRiders"
+                        data-dropdown-placement="bottom"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-between"
+                        type="button">
+                    <span>Seleccionar corredores</span>
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Dropdown menu -->
+            <div id="dropdownRiders"
+                 class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownRidersButton">
+                    {% for member in members %}
+                        <li>
+                            <div class="flex items-center">
+                                <input id="checkbox-item-{{ member.id }}" type="checkbox" value="{{ member.id }}"
+                                       name="riders"
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="checkbox-item-{{ member.id }}"
+                                       class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ member.person.name }} {{ member.person.surname }}</label>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+                <label for="dropdownCheckboxButton"
+                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Entrenadores</label>
+                <button id="dropdownTrainersButton" data-dropdown-toggle="dropdownTrainers"
+                        data-dropdown-placement="bottom"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-between"
+                        type="button">
+                    <span>Seleccionar Entrenadores</span>
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Dropdown menu -->
+            <div id="dropdownTrainers"
+                 class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownTrainersButton">
+                    {% for member in members %}
+                        <li>
+                            <div class="flex items-center">
+                                <input id="checkbox-item-{{ member.id }}" type="checkbox" value="{{ member.id }}"
+                                       name="trainers"
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="checkbox-item-{{ member.id }}"
+                                       class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ member.person.name }} {{ member.person.surname }}</label>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Error Message Container -->
+            <div id="addErrorMessageContainer"
+                 class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 col-span-6"
+                 role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <span class="font-medium" id="addErrorMessage">Ensure that these requirements are met:</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="add-tab-files" role="tabpanel" aria-labelledby="add-files-tab" class="grid grid-cols-6 gap-6 hidden">
+            <div id="file-upload-section" class="col-span-6 sm:col-span-6">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Archivos</label>
+                <div id="file-upload-container">
+
+                </div>
+                <div class="flex flex-row justify-end items-right">
+                    <button type="button" id="add-file-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro archivo
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="add-link-upload"
+                            class="add-button text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        Agregar otro enlace
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

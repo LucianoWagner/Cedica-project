@@ -1,0 +1,139 @@
+{% extends 'view_modal_with_files.html' %}
+
+{% block module %}
+    Miembro
+{% endblock %}
+
+{% block data_tab_content %}
+    <input type="hidden" name="id" id="view_id">
+
+    <!-- Name -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_name"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+        <input type="text" id="view_name" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Surname -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_surname"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+        <input type="text" id="view_surname" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- DNI -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_dni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+        <input type="text" id="view_dni" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Address -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_address"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
+        <input type="text" id="view_address" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Telephone -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_telephone"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+        <input type="text" id="view_telephone" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_emergency_contact"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contacto
+            de Emergencia</label>
+        <input type="text" id="view_emergency_contact" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Email -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_email"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <input type="email" id="view_email" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Locality -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_locality"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Localidad</label>
+        <input type="text" id="view_locality" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Profession -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_profession"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profesión</label>
+        <input type="text" id="view_profession" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Job Position -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_job_position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Puesto
+            de Trabajo</label>
+        <input type="text" id="view_job_position" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Start Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha
+            de
+            Inicio</label>
+        <input type="text" id="view_start_date" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- End Date -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+            Fin</label>
+        <input type="text" id="view_end_date" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Medical Insurance -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_medical_insurance"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seguro
+            Médico</label>
+        <input type="text" id="view_medical_insurance" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Insurance Number -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_insurance_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número
+            de Seguro</label>
+        <input type="text" id="view_insurance_number" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Job Condition -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_job_condition" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condición
+            Laboral</label>
+        <input type="text" id="view_job_condition" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+
+    <!-- Active -->
+    <div class="col-span-6 sm:col-span-3">
+        <label for="view_active"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Activo</label>
+        <input type="text" id="view_active" readonly
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+{% endblock %}
